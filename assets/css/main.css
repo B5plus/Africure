@@ -1511,6 +1511,34 @@ th {
 }
 
 /* ===================================
+   AFRICURE LOGO TEXT STYLING
+   =================================== */
+
+.africure-logo-text {
+  font-weight: var(--font-bold) !important;
+}
+
+/* Africure logo text colors - each character */
+.hero-title .africure-logo-text .char-a { color: #1e40af !important; } /* Blue */
+.hero-title .africure-logo-text .char-f { color: #059669 !important; } /* Green */
+.hero-title .africure-logo-text .char-r { color: #dc2626 !important; } /* Red */
+.hero-title .africure-logo-text .char-i { color: #7c3aed !important; } /* Purple */
+.hero-title .africure-logo-text .char-c { color: #ea580c !important; } /* Orange */
+.hero-title .africure-logo-text .char-u { color: #0891b2 !important; } /* Cyan */
+.hero-title .africure-logo-text .char-r2 { color: #be123c !important; } /* Rose */
+.hero-title .africure-logo-text .char-e { color: #16a34a !important; } /* Emerald */
+
+/* Alternative more specific selectors */
+#hero-title .char-a { color: #1e40af !important; }
+#hero-title .char-f { color: #059669 !important; }
+#hero-title .char-r { color: #dc2626 !important; }
+#hero-title .char-i { color: #7c3aed !important; }
+#hero-title .char-c { color: #ea580c !important; }
+#hero-title .char-u { color: #0891b2 !important; }
+#hero-title .char-r2 { color: #be123c !important; }
+#hero-title .char-e { color: #16a34a !important; }
+
+/* ===================================
    HERO SECTION
    =================================== */
 
@@ -1737,6 +1765,8 @@ th {
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  padding-top: var(--space-8) !important;
+  padding-bottom: var(--space-12) !important;
 }
 
 .about-preview::before {
@@ -1753,9 +1783,10 @@ th {
 }
 
 .about-grid {
-  display: grid;
-  gap: var(--space-16);
+  display: flex;
+  justify-content: center;
   align-items: center;
+  gap: var(--space-16);
   position: relative;
   z-index: 1;
 }
@@ -1820,11 +1851,19 @@ th {
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  height: 400px;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .about-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   transition: transform var(--transition-slow);
 }
 
@@ -1832,14 +1871,44 @@ th {
   transform: scale(1.05);
 }
 
+/* Mobile responsive adjustments */
+@media (max-width: 767px) {
+  .about-preview {
+    padding-top: var(--space-6) !important;
+    padding-bottom: var(--space-8) !important;
+  }
+
+  .about-image {
+    height: 280px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about-preview {
+    padding-top: var(--space-6) !important;
+    padding-bottom: var(--space-10) !important;
+  }
+
+  .about-image {
+    height: 350px;
+    max-width: 700px;
+  }
+}
+
 @media (min-width: 1024px) {
   .about-grid {
-    grid-template-columns: 1fr 1fr;
     gap: var(--space-20);
   }
 
   .about-content {
     padding: var(--space-10);
+  }
+
+  .about-image {
+    height: 500px;
+    max-width: 1000px;
   }
 }
 
@@ -4438,6 +4507,746 @@ th {
 
 .no-results p {
   margin-bottom: var(--space-6);
+}
+
+/* ===================================
+   AFRICURE BRAND TEXT COLORS - HIGH PRIORITY
+   =================================== */
+
+/* Override hero title colors for Africure brand text */
+.hero .hero-title .africure-logo-text span {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+.hero .hero-title .char-a,
+.hero #hero-title .char-a {
+  color: #3b82f6 !important;
+  text-shadow: 0 4px 8px rgba(59, 130, 246, 0.3) !important;
+}
+
+.hero .hero-title .char-f,
+.hero #hero-title .char-f {
+  color: #10b981 !important;
+  text-shadow: 0 4px 8px rgba(16, 185, 129, 0.3) !important;
+}
+
+.hero .hero-title .char-r,
+.hero #hero-title .char-r {
+  color: #ef4444 !important;
+  text-shadow: 0 4px 8px rgba(239, 68, 68, 0.3) !important;
+}
+
+.hero .hero-title .char-i,
+.hero #hero-title .char-i {
+  color: #8b5cf6 !important;
+  text-shadow: 0 4px 8px rgba(139, 92, 246, 0.3) !important;
+}
+
+.hero .hero-title .char-c,
+.hero #hero-title .char-c {
+  color: #f97316 !important;
+  text-shadow: 0 4px 8px rgba(249, 115, 22, 0.3) !important;
+}
+
+.hero .hero-title .char-u,
+.hero #hero-title .char-u {
+  color: #06b6d4 !important;
+  text-shadow: 0 4px 8px rgba(6, 182, 212, 0.3) !important;
+}
+
+.hero .hero-title .char-r2,
+.hero #hero-title .char-r2 {
+  color: #ec4899 !important;
+  text-shadow: 0 4px 8px rgba(236, 72, 153, 0.3) !important;
+}
+
+.hero .hero-title .char-e,
+.hero #hero-title .char-e {
+  color: #22c55e !important;
+  text-shadow: 0 4px 8px rgba(34, 197, 94, 0.3) !important;
+}
+
+/* Process Steps Responsive */
+@media (max-width: 1024px) {
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 768px) {
+  .process-steps {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .process-step {
+    padding: var(--space-8);
+  }
+
+  .process-step::before {
+    width: 50px;
+    height: 50px;
+    top: -20px;
+    font-size: var(--text-lg);
+    border: 4px solid var(--white);
+  }
+
+  .process-step h3 {
+    font-size: var(--text-xl);
+    margin: var(--space-8) 0 var(--space-4);
+  }
+
+  .process-step p {
+    font-size: var(--text-base);
+  }
+}
+
+/* ===================================
+   INTERACTIVE CAREER FORM STYLES
+   =================================== */
+
+.interactive-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.interactive-form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #10b981, #f59e0b, #ef4444);
+}
+
+/* Progress Bar */
+.form-progress {
+  padding: 2rem 2rem 1rem;
+  background: #ffffff;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #10b981);
+  border-radius: 3px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 33.33%;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.step.active .step-number {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.step.completed .step-number {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.step-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+  transition: color 0.3s ease;
+}
+
+.step.active .step-label {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.step.completed .step-label {
+  color: #10b981;
+}
+
+/* Form Steps */
+.interactive-career-form {
+  padding: 0 2rem 2rem;
+}
+
+.form-step {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-step.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.step-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.step-subtitle {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Floating Input Styles */
+.floating-input-group {
+  position: relative;
+}
+
+.floating-input {
+  width: 100%;
+  padding: 1rem 1rem 0.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.floating-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.floating-label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: #6b7280;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  background: #ffffff;
+  padding: 0 0.25rem;
+}
+
+.floating-input:focus + .floating-label,
+.floating-input:not(:placeholder-shown) + .floating-label {
+  top: -0.5rem;
+  font-size: 0.75rem;
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+.input-highlight {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #10b981);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.floating-input:focus ~ .input-highlight {
+  width: 100%;
+}
+
+/* Floating Textarea */
+.floating-textarea-group {
+  position: relative;
+}
+
+.floating-textarea {
+  width: 100%;
+  padding: 1rem 1rem 0.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  outline: none;
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+.floating-textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.floating-textarea:focus + .floating-label,
+.floating-textarea:not(:placeholder-shown) + .floating-label {
+  top: -0.5rem;
+  font-size: 0.75rem;
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+/* Custom Select Styles */
+.custom-select-group {
+  position: relative;
+}
+
+.select-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.custom-select {
+  position: relative;
+  width: 100%;
+}
+
+.select-trigger {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.select-trigger:hover {
+  border-color: #d1d5db;
+}
+
+.select-trigger.active {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.select-text {
+  color: #374151;
+  font-size: 1rem;
+}
+
+.select-text.placeholder {
+  color: #9ca3af;
+}
+
+.select-arrow {
+  color: #6b7280;
+  transition: transform 0.3s ease;
+}
+
+.select-trigger.active .select-arrow {
+  transform: rotate(180deg);
+}
+
+.select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.custom-select.active .select-options {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.select-option {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 0.875rem;
+}
+
+.select-option:hover {
+  background: #f3f4f6;
+}
+
+.select-option.selected {
+  background: #eff6ff;
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+/* File Upload Styles */
+.interactive-file-upload {
+  position: relative;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-upload-area {
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.file-upload-area:hover {
+  border-color: #3b82f6;
+  background: #f0f9ff;
+}
+
+.file-upload-area.dragover {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  transform: scale(1.02);
+}
+
+.upload-icon {
+  color: #6b7280;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.file-upload-area:hover .upload-icon {
+  color: #3b82f6;
+}
+
+.upload-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.upload-main {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.upload-sub {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.upload-formats {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.file-preview {
+  border: 2px solid #10b981;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #f0fdf4;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.file-icon {
+  font-size: 1.5rem;
+}
+
+.file-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.file-name {
+  font-weight: 500;
+  color: #374151;
+}
+
+.file-size {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.remove-file {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.remove-file:hover {
+  background: #dc2626;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checkbox-icon {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+input[type="checkbox"]:checked + .checkbox-label .checkbox-custom {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+input[type="checkbox"]:checked + .checkbox-label .checkbox-icon {
+  opacity: 1;
+}
+
+.checkbox-text {
+  color: #374151;
+}
+
+/* Navigation Buttons */
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+}
+
+.prev-btn {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.prev-btn:hover {
+  background: #e5e7eb;
+}
+
+.next-btn, .submit-btn {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+}
+
+.next-btn:hover, .submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.submit-btn:hover {
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+/* Alternative Contact */
+.alternative-contact {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.contact-text {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.contact-options {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.contact-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.contact-option.email {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.contact-option.email:hover {
+  background: #dbeafe;
+  transform: translateY(-2px);
+}
+
+.contact-option.whatsapp {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.contact-option.whatsapp:hover {
+  background: #dcfce7;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .interactive-form-container {
+    margin: 1rem;
+    border-radius: 16px;
+  }
+
+  .form-progress {
+    padding: 1.5rem 1.5rem 1rem;
+  }
+
+  .interactive-career-form {
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .progress-steps {
+    gap: 1rem;
+  }
+
+  .step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+
+  .step-label {
+    font-size: 0.625rem;
+  }
+
+  .contact-options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-navigation {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ===================================
@@ -8081,8 +8890,8 @@ th {
 
 .process-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-10);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
   margin-top: var(--space-16);
   position: relative;
   z-index: 1;
@@ -8092,8 +8901,8 @@ th {
   text-align: center;
   position: relative;
   background: var(--white);
-  padding: var(--space-8);
-  border-radius: 20px;
+  padding: var(--space-6);
+  border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(59, 130, 246, 0.1);
   transition: all 0.3s ease;
@@ -8108,11 +8917,11 @@ th {
 .process-step::before {
   content: attr(data-step);
   position: absolute;
-  top: -20px;
+  top: -18px;
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(135deg, var(--brand-blue), var(--brand-teal));
   color: var(--white);
   border-radius: 50%;
@@ -8120,26 +8929,26 @@ th {
   align-items: center;
   justify-content: center;
   font-weight: var(--font-bold);
-  font-size: var(--text-xl);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
-  border: 4px solid var(--white);
+  font-size: var(--text-base);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  border: 3px solid var(--white);
 }
 
 .process-step h3 {
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   font-weight: var(--font-bold);
   color: var(--gray-900);
-  margin: var(--space-8) 0 var(--space-4);
+  margin: var(--space-6) 0 var(--space-3);
   position: relative;
 }
 
 .process-step h3::after {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: -6px;
   left: 50%;
   transform: translateX(-50%);
-  width: 40px;
+  width: 30px;
   height: 2px;
   background: linear-gradient(90deg, var(--brand-blue), var(--brand-teal));
   border-radius: 1px;
@@ -8149,7 +8958,7 @@ th {
   color: var(--gray-600);
   line-height: var(--leading-relaxed);
   margin: 0;
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
 }
 
 /* Enhanced Responsive Design for Careers */
