@@ -75,9 +75,10 @@
         constructor() {
             this.toggle = document.querySelector('.mobile-menu-toggle');
             this.menu = document.querySelector('.navbar-menu');
+            this.closeBtn = document.querySelector('.mobile-menu-close');
             this.navLinks = document.querySelectorAll('.nav-link');
             this.body = document.body;
-            
+
             this.init();
         }
 
@@ -85,7 +86,12 @@
             if (!this.toggle || !this.menu) return;
 
             this.toggle.addEventListener('click', () => this.toggleMenu());
-            
+
+            // Close button functionality
+            if (this.closeBtn) {
+                this.closeBtn.addEventListener('click', () => this.closeMenu());
+            }
+
             // Close menu when clicking nav links
             this.navLinks.forEach(link => {
                 link.addEventListener('click', () => this.closeMenu());
