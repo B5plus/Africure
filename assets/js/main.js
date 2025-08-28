@@ -441,6 +441,74 @@
     }
 
     // ===================================
+    // HERO SLIDER
+    // ===================================
+
+    class HeroSlider {
+        constructor() {
+            this.slider = document.querySelector('.hero-slider');
+            this.slides = document.querySelectorAll('.hero-slide');
+            this.currentSlide = 0;
+            this.slideInterval = null;
+
+            if (this.slider && this.slides.length > 0) {
+                this.init();
+            }
+        }
+
+        init() {
+            // Start the slider
+            this.startSlider();
+
+            // Pause on hover
+            this.slider.addEventListener('mouseenter', () => this.pauseSlider());
+            this.slider.addEventListener('mouseleave', () => this.startSlider());
+
+            // Pause when page is not visible
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    this.pauseSlider();
+                } else {
+                    this.startSlider();
+                }
+            });
+        }
+
+        startSlider() {
+            this.pauseSlider(); // Clear any existing interval
+            this.slideInterval = setInterval(() => {
+                this.nextSlide();
+            }, 5000); // 5 seconds
+        }
+
+        pauseSlider() {
+            if (this.slideInterval) {
+                clearInterval(this.slideInterval);
+                this.slideInterval = null;
+            }
+        }
+
+        nextSlide() {
+            // Remove active class from current slide
+            this.slides[this.currentSlide].classList.remove('active');
+
+            // Move to next slide
+            this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+
+            // Add active class to new slide
+            this.slides[this.currentSlide].classList.add('active');
+        }
+
+        goToSlide(index) {
+            if (index >= 0 && index < this.slides.length) {
+                this.slides[this.currentSlide].classList.remove('active');
+                this.currentSlide = index;
+                this.slides[this.currentSlide].classList.add('active');
+            }
+        }
+    }
+
+    // ===================================
     // INITIALIZATION
     // ===================================
 
@@ -458,6 +526,7 @@
         new FormValidation();
         new ScrollAnimations();
         new PerformanceOptimizations();
+        new HeroSlider();
 
         // Add body class to indicate JS is loaded
         document.body.classList.add('js-loaded');
