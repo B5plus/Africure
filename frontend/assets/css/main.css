@@ -1912,6 +1912,103 @@ th {
   }
 }
 
+/* Video Player Styles */
+.about-video {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  height: 400px;
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.video-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-slow);
+}
+
+.video-thumbnail:hover img {
+  transform: scale(1.05);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all var(--transition-normal);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.play-button:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+#video-player {
+  border-radius: var(--radius-xl);
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Mobile responsive adjustments for video */
+@media (max-width: 767px) {
+  .about-video {
+    height: 280px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .play-button svg {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about-video {
+    height: 350px;
+    max-width: 700px;
+  }
+
+  .play-button svg {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-video {
+    height: 500px;
+    max-width: 1000px;
+  }
+}
+
 /* ===================================
    SERVICES PREVIEW SECTION
    =================================== */
@@ -3583,7 +3680,7 @@ th {
 .events-header {
   background:
     linear-gradient(135deg, rgba(30, 64, 175, 0.4) 0%, rgba(59, 130, 246, 0.4) 100%),
-    url('../images/family.png');
+    url('../images/bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

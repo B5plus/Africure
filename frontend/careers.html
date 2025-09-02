@@ -33,7 +33,7 @@
             <div class="container">
                 <div class="navbar-brand">
                     <a href="index.html" class="logo" aria-label="Africure Pharma Home">
-                        <img src="assets/images/logo.png" alt="Africure Pharma" width="180" height="60">
+                        <img src="assets/images/afri.png" alt="Africure Pharma" width="200" height="67">
                     </a>
                     <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
                         <span class="hamburger-line"></span>
@@ -45,7 +45,7 @@
                 <div class="navbar-menu" id="navbar-menu">
                     <div class="mobile-menu-header">
                         <div class="mobile-menu-logo">
-                            <img src="assets/images/logo.png" alt="Africure Pharma" width="120" height="40">
+                            <img src="assets/images/afri.png" alt="Africure Pharma" width="200" height="67">
                         </div>
                         <button class="mobile-menu-close" aria-label="Close mobile menu">
                             <span>&times;</span>
@@ -65,13 +65,13 @@
                             <a href="capabilities.html" class="nav-link">Capabilities</a>
                         </li>
                         <li class="nav-item">
+                            <a href="products.html" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="events.html" class="nav-link">Events</a>
                         </li>
                         <li class="nav-item">
                             <a href="careers.html" class="nav-link active" aria-current="page">Careers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="contact.html" class="nav-link">Contact</a>
                         </li>
                     </ul>
                     <div class="navbar-cta">
@@ -128,7 +128,7 @@
                         </div>
                     </div>
 
-                    <form class="interactive-career-form" id="interactiveCareerForm" action="#" method="POST" enctype="multipart/form-data">
+                    <form class="interactive-career-form" id="interactiveCareerForm" action="http://localhost:3002/api/careers/apply" method="POST" enctype="multipart/form-data">
                         <!-- Step 1: Personal Information -->
                         <div class="form-step active" data-step="1">
                             <div class="step-header">
@@ -733,45 +733,90 @@
             }
 
             // Form submission
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 if (validateCurrentStep()) {
-                    // Show success message
-                    const formContainer = document.querySelector('.interactive-form-container');
-                    formContainer.innerHTML = `
-                        <div style="padding: 3rem; text-align: center;">
-                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                                    <polyline points="20,6 9,17 4,12"></polyline>
-                                </svg>
-                            </div>
-                            <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Application Submitted Successfully!</h3>
-                            <p style="color: #6b7280; margin-bottom: 2rem;">Thank you for your interest in joining Africure Pharma. We'll review your application and get back to you soon.</p>
-                            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                                <a href="mailto:hrd@africurepharma.com" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #eff6ff; color: #3b82f6; text-decoration: none; border-radius: 8px; font-weight: 500;">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                        <polyline points="22,6 12,13 2,6"></polyline>
-                                    </svg>
-                                    Contact HR
-                                </a>
-                                <a href="index.html" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #f3f4f6; color: #374151; text-decoration: none; border-radius: 8px; font-weight: 500;">
-                                    Back to Home
-                                </a>
-                            </div>
-                        </div>
+                    // Show loading state
+                    const submitBtn = document.getElementById('submitBtn');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = `
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                        Submitting...
                     `;
+                    submitBtn.disabled = true;
+
+                    try {
+                        // Prepare form data
+                        const formData = new FormData(form);
+
+                        // Submit to backend
+                        const response = await fetch('http://localhost:3002/api/careers/apply', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        const result = await response.json();
+
+                        if (result.success) {
+                            // Show success message
+                            const formContainer = document.querySelector('.interactive-form-container');
+                            formContainer.innerHTML = `
+                                <div style="padding: 3rem; text-align: center;">
+                                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                            <polyline points="20,6 9,17 4,12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Application Submitted Successfully!</h3>
+                                    <p style="color: #6b7280; margin-bottom: 1rem;">${result.message}</p>
+                                    <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 1rem; border-radius: 8px; margin-bottom: 2rem;">
+                                        <p style="color: #1e40af; margin: 0; font-size: 0.9rem;"><strong>Application Number: ${result.data.applicationNumber}</strong></p>
+                                        <p style="color: #374151; margin: 0.5rem 0 0 0; font-size: 0.9rem;">Please save this number for future reference.</p>
+                                    </div>
+                                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                                        <a href="mailto:hrd@africurepharma.com" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #eff6ff; color: #3b82f6; text-decoration: none; border-radius: 8px; font-weight: 500;">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                                <polyline points="22,6 12,13 2,6"></polyline>
+                                            </svg>
+                                            Contact HR
+                                        </a>
+                                        <button onclick="location.reload()" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #2563eb; color: white; border: none; border-radius: 8px; font-weight: 500; cursor: pointer;">
+                                            Submit Another Application
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                        } else {
+                            // Show error message
+                            alert('Error: ' + (result.message || 'Failed to submit application. Please try again.'));
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                        }
+                    } catch (error) {
+                        console.error('Submission error:', error);
+                        alert('Network error. Please check your connection and try again.');
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }
                 }
             });
         });
 
-        // Add shake animation CSS
+        // Add animations CSS
         const style = document.createElement('style');
         style.textContent = `
             @keyframes shake {
                 0%, 100% { transform: translateX(0); }
                 25% { transform: translateX(-5px); }
                 75% { transform: translateX(5px); }
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
             }
         `;
         document.head.appendChild(style);

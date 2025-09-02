@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Favicon - Africure Pharma</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f8fafc;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #1e40af;
+            margin-bottom: 20px;
+        }
+        .favicon-preview {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        canvas {
+            border: 2px solid #e2e8f0;
+            border-radius: 4px;
+            margin: 10px;
+            background: white;
+        }
+        .download-btn {
+            background: #1e40af;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .download-btn:hover {
+            background: #1d4ed8;
+        }
+        .instructions {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .instructions h3 {
+            color: #1e40af;
+            margin-top: 0;
+        }
+        .code {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Africure Pharma Favicon Creator</h1>
+        
+        <div class="favicon-preview">
+            <h3>Favicon Preview</h3>
+            <canvas id="favicon16" width="16" height="16"></canvas>
+            <canvas id="favicon32" width="32" height="32"></canvas>
+            <canvas id="favicon48" width="48" height="48"></canvas>
+            <br>
+            <button class="download-btn" onclick="downloadFavicon(16)">Download 16x16</button>
+            <button class="download-btn" onclick="downloadFavicon(32)">Download 32x32</button>
+            <button class="download-btn" onclick="downloadFavicon(48)">Download favicon.ico</button>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 How to Add Favicon to Your Website</h3>
+            <p><strong>Step 1:</strong> Download the favicon.ico file (48x48 version)</p>
+            <p><strong>Step 2:</strong> Save it as <code>favicon.ico</code> in your <code>frontend/assets/images/</code> folder</p>
+            <p><strong>Step 3:</strong> Your HTML files already have the favicon link:</p>
+            <div class="code">
+&lt;link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"&gt;
+            </div>
+            <p><strong>Step 4:</strong> Clear your browser cache and refresh - you should see the favicon in the browser tab!</p>
+        </div>
+    </div>
+
+    <script>
+        function createFavicon(size) {
+            const canvas = document.getElementById(`favicon${size}`);
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Background
+            ctx.fillStyle = '#1e40af';
+            ctx.roundRect(0, 0, size, size, size * 0.125);
+            ctx.fill();
+            
+            // Letter A
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size * 0.6}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('A', size/2, size/2);
+            
+            // Small medical cross (only for larger sizes)
+            if (size >= 32) {
+                const crossSize = size * 0.15;
+                const crossX = size * 0.75;
+                const crossY = size * 0.25;
+                
+                ctx.fillStyle = '#10b981';
+                // Vertical bar
+                ctx.fillRect(crossX - crossSize/6, crossY - crossSize/2, crossSize/3, crossSize);
+                // Horizontal bar  
+                ctx.fillRect(crossX - crossSize/2, crossY - crossSize/6, crossSize, crossSize/3);
+            }
+            
+            return canvas;
+        }
+        
+        function downloadFavicon(size) {
+            const canvas = createFavicon(size);
+            const link = document.createElement('a');
+            
+            if (size === 48) {
+                link.download = 'favicon.ico';
+            } else {
+                link.download = `favicon-${size}x${size}.png`;
+            }
+            
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // Add roundRect polyfill for older browsers
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+                this.beginPath();
+                this.moveTo(x + radius, y);
+                this.lineTo(x + width - radius, y);
+                this.quadraticCurveTo(x + width, y, x + width, y + radius);
+                this.lineTo(x + width, y + height - radius);
+                this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                this.lineTo(x + radius, y + height);
+                this.quadraticCurveTo(x, y + height, x, y + height - radius);
+                this.lineTo(x, y + radius);
+                this.quadraticCurveTo(x, y, x + radius, y);
+                this.closePath();
+            };
+        }
+        
+        // Create favicons when page loads
+        window.onload = function() {
+            createFavicon(16);
+            createFavicon(32);
+            createFavicon(48);
+        };
+    </script>
+</body>
+</html>

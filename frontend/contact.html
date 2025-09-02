@@ -63,7 +63,7 @@
             <div class="container">
                 <div class="navbar-brand">
                     <a href="index.html" class="logo" aria-label="Africure Pharma Home">
-                        <img src="assets/images/logo.png" alt="Africure Pharma" width="180" height="60">
+                        <img src="assets/images/afri.png" alt="Africure Pharma" width="200" height="67">
                     </a>
                     <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
                         <span class="hamburger-line"></span>
@@ -75,7 +75,7 @@
                 <div class="navbar-menu" id="navbar-menu">
                     <div class="mobile-menu-header">
                         <div class="mobile-menu-logo">
-                            <img src="assets/images/logo.png" alt="Africure Pharma" width="120" height="40">
+                            <img src="assets/images/afri.png" alt="Africure Pharma" width="200" height="67">
                         </div>
                         <button class="mobile-menu-close" aria-label="Close mobile menu">
                             <span>&times;</span>
@@ -95,13 +95,13 @@
                             <a href="capabilities.html" class="nav-link">Capabilities</a>
                         </li>
                         <li class="nav-item">
+                            <a href="products.html" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="events.html" class="nav-link">Events</a>
                         </li>
                         <li class="nav-item">
                             <a href="careers.html" class="nav-link">Careers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="contact.html" class="nav-link active" aria-current="page">Contact</a>
                         </li>
                     </ul>
                     <div class="navbar-cta">
@@ -122,6 +122,29 @@
                     <p class="page-subtitle">
                         Get in touch with our team for inquiries, partnerships, or support
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Portfolio Section -->
+        <section class="products-section" style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%), url('assets/images/medi.jpeg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 5rem 0;">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 class="section-title" style="color: #1e293b; margin-bottom: 1rem; font-size: 2.5rem; font-weight: 700;">Our Product Portfolio</h2>
+                    <p class="section-subtitle" style="color: #64748b; max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem; line-height: 1.6;">Explore our comprehensive range of essential medications, each manufactured to the highest international standards with proper licensing and regulatory approval.</p>
+
+                    <!-- Product Filters -->
+                    <div class="products-filter" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 2rem;">
+                        <button class="filter-btn active" data-category="all">All Products</button>
+                        <button class="filter-btn" data-category="antibiotics">Antibiotics</button>
+                        <button class="filter-btn" data-category="analgesics">Analgesics</button>
+                        <button class="filter-btn" data-category="cardiovascular">Cardiovascular</button>
+                        <button class="filter-btn" data-category="respiratory">Respiratory</button>
+                        <button class="filter-btn" data-category="gastrointestinal">Gastrointestinal</button>
+                        <button class="filter-btn" data-category="antimalarial">Antimalarial</button>
+                        <button class="filter-btn" data-category="vitamins">Vitamins & Supplements</button>
+                        <button class="filter-btn" data-category="other">Other</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -394,6 +417,45 @@
         </section>
 
     </main>
+
+    <style>
+        .products-filter button {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            background: rgba(255, 255, 255, 0.9);
+            color: #1e293b;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+
+        .products-filter button:hover,
+        .products-filter button.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem !important;
+            }
+
+            .products-filter {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            .products-filter button {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
 
     <!-- Footer -->
     <footer class="footer" role="contentinfo">

@@ -7,6 +7,7 @@ const rateLimit = require('express-rate-limit');
 const config = require('./config');
 const { testSupabaseConnection } = require('./config/supabase');
 const contactRoutes = require('./routes/contactRoutes');
+const careerRoutes = require('./routes/careerRoutes');
 const { errorHandler } = require('./middleware/errorHandler');
 
 /**
@@ -93,6 +94,7 @@ class Server {
 
     // API routes
     this.app.use(`${config.api.prefix}/contact`, contactRoutes);
+    this.app.use(`${config.api.prefix}/careers`, careerRoutes);
 
     // 404 handler
     this.app.use('*', (req, res) => {

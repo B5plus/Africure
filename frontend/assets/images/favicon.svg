@@ -1,0 +1,11 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Africure Pharma Favicon -->
+  <rect width="32" height="32" rx="4" fill="#1e40af"/>
+  
+  <!-- Letter A for Africure -->
+  <path d="M16 6L22 26H19L17.5 22H14.5L13 26H10L16 6Z M15.2 19H16.8L16 16.5L15.2 19Z" fill="white"/>
+  
+  <!-- Medical Cross accent -->
+  <rect x="24" y="4" width="2" height="6" fill="#10b981" rx="1"/>
+  <rect x="22" y="6" width="6" height="2" fill="#10b981" rx="1"/>
+</svg>

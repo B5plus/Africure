@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Favicon Creator - Africure Pharma</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f8fafc;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1e40af;
+            margin-bottom: 20px;
+        }
+        .favicon-preview {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        canvas {
+            border: 2px solid #e2e8f0;
+            border-radius: 4px;
+            margin: 10px;
+            background: white;
+        }
+        .download-btn {
+            background: #1e40af;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .download-btn:hover {
+            background: #1d4ed8;
+        }
+        .instructions {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .instructions h3 {
+            color: #1e40af;
+            margin-top: 0;
+        }
+        .code {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Simple Africure Favicon</h1>
+        
+        <div class="favicon-preview">
+            <h3>Favicon Preview</h3>
+            <canvas id="favicon" width="32" height="32"></canvas>
+            <br>
+            <button class="download-btn" onclick="downloadFavicon()">Download favicon.ico</button>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 How to Use Your Favicon</h3>
+            <p><strong>Step 1:</strong> Click "Download favicon.ico" above</p>
+            <p><strong>Step 2:</strong> Save it as <code>favicon.ico</code> in your <code>frontend/assets/images/</code> folder</p>
+            <p><strong>Step 3:</strong> Your HTML already has the favicon link:</p>
+            <div class="code">
+&lt;link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"&gt;
+            </div>
+            <p><strong>Step 4:</strong> Clear browser cache (Ctrl+F5) and refresh - you should see the favicon!</p>
+        </div>
+    </div>
+
+    <script>
+        function createFavicon() {
+            const canvas = document.getElementById('favicon');
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, 32, 32);
+            
+            // Background - Africure blue
+            ctx.fillStyle = '#1e40af';
+            ctx.fillRect(0, 0, 32, 32);
+            
+            // Letter A for Africure
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 20px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('A', 16, 16);
+            
+            // Small medical cross
+            ctx.fillStyle = '#10b981';
+            ctx.fillRect(24, 4, 2, 8);
+            ctx.fillRect(22, 6, 6, 2);
+            
+            return canvas;
+        }
+        
+        function downloadFavicon() {
+            const canvas = createFavicon();
+            const link = document.createElement('a');
+            link.download = 'favicon.ico';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // Create favicon when page loads
+        window.onload = function() {
+            createFavicon();
+        };
+    </script>
+</body>
+</html>
